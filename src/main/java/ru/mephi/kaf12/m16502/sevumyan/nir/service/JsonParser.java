@@ -1,4 +1,4 @@
-package service;
+package ru.mephi.kaf12.m16502.sevumyan.nir.service;
 
 import ru.mephi.kaf12.m16502.sevumyan.nir.model.Coordinates;
 

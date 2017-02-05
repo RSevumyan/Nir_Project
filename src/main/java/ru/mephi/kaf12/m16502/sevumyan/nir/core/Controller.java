@@ -1,8 +1,8 @@
 package ru.mephi.kaf12.m16502.sevumyan.nir.core;
 
 import ru.mephi.kaf12.m16502.sevumyan.nir.model.Coordinates;
-import service.JsonParser;
-import service.RestService;
+import ru.mephi.kaf12.m16502.sevumyan.nir.service.JsonParser;
+import ru.mephi.kaf12.m16502.sevumyan.nir.service.RestService;
 
 import java.io.FileOutputStream;
 import java.io.OutputStream;
