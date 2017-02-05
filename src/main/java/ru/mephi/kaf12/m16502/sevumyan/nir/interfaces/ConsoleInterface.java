@@ -30,6 +30,6 @@ public class ConsoleInterface {
         System.out.println();
         System.out.println("Введите путь к директории, в которой будут сохраняться файлы:");
         String path = scaner.next();
-        controller.getPanoramasByDirection(coordinatesList, path);
+        controller.getStreetViwsByDirection(coordinatesList, path);
     }
 }

@@ -4,6 +4,7 @@ import ru.mephi.kaf12.m16502.sevumyan.nir.model.Coordinates;
 import ru.mephi.kaf12.m16502.sevumyan.nir.service.JsonParser;
 import ru.mephi.kaf12.m16502.sevumyan.nir.service.RestService;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -64,9 +65,17 @@ public class Controller {
      * @param coordinates - список координат {@link Coordinates}
      * @param path        - путь к директории сохранения фотографий
      */
-    public void getPanoramasByDirection(List<Coordinates> coordinates, String path) {
+    public void getStreetViwsByDirection(List<Coordinates> coordinates, String path) {
+        File file = new File(path);
+        if (!file.exists()) {
+            try {
+                boolean result = file.mkdir();
+            } catch (SecurityException e) {
+                e.printStackTrace();
+            }
+        }
         for (Coordinates coordinate : coordinates) {
-            getPanorama(coordinate, path + "/" + coordinate.getLat() + " " + coordinate.getLon());
+            getStreetView(coordinate, path + "/" + coordinate.getLat() + "," + coordinate.getLon());
         }
     }
 
@@ -74,7 +83,7 @@ public class Controller {
     // = Implementation
     // ===================================================================================================================
 
-    private void getPanorama(Coordinates coordinates, String fileName) {
+    private void getStreetView(Coordinates coordinates, String fileName) {
         try {
             byte[] bytesArray = restService.getStreetView(coordinates);
             OutputStream outputStream = new FileOutputStream(fileName);
