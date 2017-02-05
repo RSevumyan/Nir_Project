@@ -1,6 +1,6 @@
 package service;
 
-import common.Coordinates;
+import ru.mephi.kaf12.m16502.sevumyan.nir.model.Coordinates;
 
 import java.io.StringReader;
 import javax.json.JsonReader;

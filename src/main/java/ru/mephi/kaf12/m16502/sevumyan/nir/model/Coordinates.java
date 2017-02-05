@@ -1,4 +1,4 @@
-package common;
+package ru.mephi.kaf12.m16502.sevumyan.nir.model;
 
 public class Coordinates {
 	private double lat;
