@@ -27,9 +27,9 @@ public class JsonParser {
         JsonObject jsonst = (JsonObject) reader.read();
         JsonArray array = jsonst.getJsonArray("results");
         JsonObject first = array.getJsonObject(0);
-        JsonObject northeast = first.getJsonObject("geometry").getJsonObject("bounds").getJsonObject("northeast");
-        return new Coordinates(Double.parseDouble(northeast.getJsonNumber("lat").toString()),
-                Double.parseDouble(northeast.getJsonNumber("lng").toString()));
+        JsonObject location = first.getJsonObject("geometry").getJsonObject("location");
+        return new Coordinates(Double.parseDouble(location.getJsonNumber("lat").toString()),
+                Double.parseDouble(location.getJsonNumber("lng").toString()));
     }
 
     /**

@@ -35,7 +35,6 @@ public class Controller {
         Coordinates coordinates = null;
         try {
             String json = restService.getGeocoding(streetName);
-            jsonParser = new JsonParser();
             coordinates = jsonParser.parseGeocode(json);
         } catch (Exception e) {
             e.printStackTrace();

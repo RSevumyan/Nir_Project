@@ -5,14 +5,13 @@ import ru.mephi.kaf12.m16502.sevumyan.nir.model.Coordinates;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 import java.util.List;
 
 /**
  * Класс, реализующий графический интерфейс.
  */
 public class GUIInterface {
-    private static final long serialVersionUID = -7157905014258208288L;
-
     private Controller controller;
     private JButton loadButton;
     private JPanel streetViewLoaderPanel;
@@ -37,6 +36,11 @@ public class GUIInterface {
         frame.setLocation(500, 150);
         frame.setContentPane(this.streetViewLoaderPanel);
         streetViewLoaderPanel.setPreferredSize(new Dimension(100, 100));
+        URL url = getClass().getClassLoader().getResource("/resources/street-view-icon.png");
+        if (url != null) {
+            String iconPath = url.getPath();
+            frame.setIconImage(new ImageIcon(iconPath).getImage());
+        }
         pathFiled.setText(System.getProperty("user.dir") + "/StreetViews");
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
