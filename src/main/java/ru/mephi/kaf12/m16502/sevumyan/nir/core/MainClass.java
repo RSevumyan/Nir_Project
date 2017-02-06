@@ -1,7 +1,7 @@
 package ru.mephi.kaf12.m16502.sevumyan.nir.core;
 
 import ru.mephi.kaf12.m16502.sevumyan.nir.interfaces.ConsoleInterface;
-import ru.mephi.kaf12.m16502.sevumyan.nir.interfaces.GUIInterface;
+import ru.mephi.kaf12.m16502.sevumyan.nir.interfaces.gui.GUIInterface;
 
 public class MainClass {
 
@@ -16,6 +16,7 @@ public class MainClass {
                 case 'w':
                 case 'W':
                     GUIInterface gui = new GUIInterface();
+                    gui.startGUI();
                     break;
 
                 case 'c':

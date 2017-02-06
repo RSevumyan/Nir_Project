@@ -11,12 +11,13 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс, содежащий методы дл работы с Google Map API.
+ */
 public class RestService {
     private static final String GOOGLE_API_KEY = "AIzaSyDZvb2R8tCxXLOJQMo7i-38-wzRGmPKKLE";
-    private static final String GEOCODING_URL_FORMAT =
-            "https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=%s";
-    private static final String DESTINATION_URL_FORMAT =
-            "https://maps.googleapis.com/maps/api/directions/json?origin=%s&destination=%s&mode=driving&key=%s";
+    private static final String GEOCODING_URL_FORMAT = "https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=%s";
+    private static final String DESTINATION_URL_FORMAT = "https://maps.googleapis.com/maps/api/directions/json?origin=%s&destination=%s&mode=driving&key=%s";
     private static final String STREET_VIEW_URL_FORMAT =
             "https://maps.googleapis.com/maps/api/streetview?size=600x300&location=%f,%f&heading=151.78&pitch=-0.76&key=%s";
 

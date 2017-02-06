@@ -6,17 +6,23 @@ import ru.mephi.kaf12.m16502.sevumyan.nir.core.Controller;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Класс, реализующий консльный интерфейс.
+ */
 public class ConsoleInterface {
     private Controller controller;
     private Scanner scaner;
 
+    /**
+     * Стандартный конструктор.
+     */
     public ConsoleInterface() {
         controller = new Controller();
         scaner = new Scanner(System.in);
     }
 
     /**
-     * Метод, организующий консольный диалоговый интерфейс
+     * Метод, организующий консольный диалоговый интерфейс.
      */
     public void start() {
         System.out.println("Введите название начальной улицы: ");

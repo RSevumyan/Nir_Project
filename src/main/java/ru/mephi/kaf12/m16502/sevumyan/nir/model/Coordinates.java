@@ -1,33 +1,56 @@
 package ru.mephi.kaf12.m16502.sevumyan.nir.model;
 
+/**
+ * Класс, инкапсулирующий в себе географические координаты (широту и долготу) и методы работы с ними.
+ */
 public class Coordinates {
-	private double lat;
-	private double lng;
+    private double lat;
+    private double lon;
 
-	/**
-	 * 
-	 * @param lat
-	 * @param lng
-	 */
-	public Coordinates(double lat, double lng) {
-		this.lat = lat;
-		this.lng = lng;
-	}
+    /**
+     * Конструктор, задающий поля широты и долготы.
+     *
+     * @param lat широта
+     * @param lon долгота
+     */
+    public Coordinates(double lat, double lon) {
+        this.lat = lat;
+        this.lon = lon;
+    }
 
-	public double getLat() {
-		return lat;
-	}
+    /**
+     * Получить значение широты
+     *
+     * @return широта
+     */
+    public double getLat() {
+        return lat;
+    }
 
-	public void setLat(double lat) {
-		this.lat = lat;
-	}
+    /**
+     * Задать значение широты
+     *
+     * @param lat широта
+     */
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
 
-	public double getLon() {
-		return lng;
-	}
+    /**
+     * Получить значение долготы
+     *
+     * @return - долготы
+     */
+    public double getLon() {
+        return lon;
+    }
 
-	public void setLon(double lon) {
-		this.lng = lon;
-	}
-
+    /**
+     * Задать значение долготы
+     *
+     * @param lon долгота
+     */
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
 }

@@ -10,17 +10,23 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.List;
 
+/**
+ * Класс контроллер приложения.
+ */
 public class Controller {
     private RestService restService;
     private JsonParser jsonParser;
 
+    /**
+     * Стандартный конструктор.
+     */
     public Controller() {
         restService = new RestService();
         jsonParser = new JsonParser();
     }
 
     /**
-     * Получить координаты конкретной улицы
+     * Получить координаты конкретной улицы.
      *
      * @param streetName название улицы, по которой требуется получить координаты.
      * @return объект {@link Coordinates}
@@ -38,21 +44,21 @@ public class Controller {
     }
 
     /**
-     * Получить список координат пути между двумя улицами
+     * Получить список координат пути между двумя улицами.
      *
-     * @param startStreet - начальная улица
-     * @param endStreet   - конечная улица
-     * @return список кординат {@link Coordinates}
+     * @param startStreet начальная улица.
+     * @param endStreet   конечная улица.
+     * @return список кординат {@link Coordinates}.
      */
     public List<Coordinates> getDirection(String startStreet, String endStreet) {
         List<Coordinates> coordinates = null;
         try {
             String res = restService.getDirection(startStreet, endStreet);
-            PrintWriter writer = new PrintWriter("сoordinates", "UTF-8");
+            PrintWriter writer = new PrintWriter("coordinates", "UTF-8");
             writer.println(res);
             writer.close();
 
-            coordinates = jsonParser.getDrection(res);
+            coordinates = jsonParser.parseDirection(res);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,22 +66,28 @@ public class Controller {
     }
 
     /**
-     * Получить фотографии пути по списку координат
+     * Получить фотографии пути по списку координат.
      *
-     * @param coordinates - список координат {@link Coordinates}
-     * @param path        - путь к директории сохранения фотографий
+     * @param coordinates список координат {@link Coordinates}.
+     * @param path        путь к директории сохранения фотографий.
      */
     public void getStreetViwsByDirection(List<Coordinates> coordinates, String path) {
         File file = new File(path);
-        if (!file.exists()) {
+        boolean mkdirResult = false;
+
+        if (file.exists()) {
+            mkdirResult = true;
+        } else {
             try {
-                boolean result = file.mkdir();
+                mkdirResult = file.mkdir();
             } catch (SecurityException e) {
                 e.printStackTrace();
             }
         }
-        for (Coordinates coordinate : coordinates) {
-            getStreetView(coordinate, path + "/" + coordinate.getLat() + "," + coordinate.getLon());
+        if (mkdirResult) {
+            for (Coordinates coordinate : coordinates) {
+                getStreetView(coordinate, path + "/" + coordinate.getLat() + "," + coordinate.getLon());
+            }
         }
     }
 

@@ -1,14 +1,15 @@
-package ru.mephi.kaf12.m16502.sevumyan.nir.interfaces;
+package ru.mephi.kaf12.m16502.sevumyan.nir.interfaces.gui;
 
 import ru.mephi.kaf12.m16502.sevumyan.nir.core.Controller;
 import ru.mephi.kaf12.m16502.sevumyan.nir.model.Coordinates;
 
 import javax.swing.*;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.util.List;
 
+/**
+ * Класс, реализующий графический интерфейс.
+ */
 public class GUIInterface {
     private static final long serialVersionUID = -7157905014258208288L;
 
@@ -20,11 +21,17 @@ public class GUIInterface {
     private JTextField pathFiled;
     private JFrame frame;
 
+    /**
+     * Стандартный конструктор.
+     */
     public GUIInterface() {
         controller = new Controller();
         frame = new JFrame("Загрузчик панорам");
     }
 
+    /**
+     * Метод, организующий графический интерфейс.
+     */
     public void startGUI() {
         frame.setSize(new Dimension(600, 200));
         frame.setLocation(500, 150);
@@ -34,12 +41,9 @@ public class GUIInterface {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        loadButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                List<Coordinates> coordinatesList = controller.getDirection(firstStreet.getText(), secondStreet.getText());
-                controller.getStreetViwsByDirection(coordinatesList, pathFiled.getText());
-            }
+        loadButton.addActionListener(actionEvent -> {
+            List<Coordinates> coordinatesList = controller.getDirection(firstStreet.getText(), secondStreet.getText());
+            controller.getStreetViwsByDirection(coordinatesList, pathFiled.getText());
         });
     }
 }
